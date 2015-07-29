@@ -87,16 +87,6 @@
     }
     
     return _persistentStoreCoordinator;
-    
-//    NSFileManager *fileManager = [NSFileManager defaultManager];
-//    if (![fileManager fileExistsAtPath:[storeURL path]]) {
-//        NSURL *defaultStoreURL = [[NSBundle mainBundle] URLForResource:@"Cities" withExtension:@"sqlite"];
-//        if (defaultStoreURL) {
-//            // By default we use what is in the bundle read-only
-//            storeURL = defaultStoreURL;
-//            _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-//        }
-//    }
 }
 
 @end

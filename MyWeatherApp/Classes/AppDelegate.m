@@ -22,11 +22,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    //UIViewController *weatherController = [WeatherTableViewController new];
-    //UIViewController *weatherNaviController = [[UINavigationController alloc]
-    //                                               initWithRootViewController: weatherController];
-    //WeatherTableViewController *weatherController = [[WeatherTableViewController alloc] init];
-    //UIViewController *weatherNaviController = [[CCKFNavDrawer alloc] initWithRootViewController:weatherController];
     NSMutableArray *controllers = [NSMutableArray arrayWithCapacity:4];
     NSArray *storyArray = @[@"Weather", @"Forecast"];
     [storyArray enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {  // 遍历数组
@@ -35,11 +30,6 @@
         [controllers addObject:vc];
     }];
     
-    //oneController.view.backgroundColor = [UIColor whiteColor];
-    //UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Forecast" bundle:nil];
-    //ForecastViewController *forecastController = [sb instantiateInitialViewController];
-    //UIViewController *forecastNaviController = [[UINavigationController alloc] initWithRootViewController:forecastController];
-    //twoController.view.backgroundColor = [UIColor blueColor];
     UIViewController *threeController = [UIViewController new];
     threeController.view.backgroundColor = [UIColor purpleColor];
     UIViewController *fourController = [UIViewController new];
@@ -48,21 +38,16 @@
     [controllers addObject:fourController];
     
     NMBottomTabBarController *tabBarController = (NMBottomTabBarController *)self.window.rootViewController;
+    tabBarController.controllers = [NSArray arrayWithArray:controllers];
     
     tabBarController.tabBar.separatorImage = [UIImage imageNamed:@"separator.jpg"];
 
-    tabBarController.controllers = [NSArray arrayWithArray:controllers];
-    //weatherNaviController, forecastController,threeController,fourController, nil];
-    //tabBarController.delegate = self;
     [tabBarController.tabBar configureTabAtIndex:0 andTitleOrientation :kTitleToRightOfIcon  withUnselectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_normal"] selectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_selected"] iconImage:[UIImage imageNamed:@"weather_normal"]  iconSelectedImage: [UIImage imageNamed:@"weather_selected"] andText:@"天气" andTextFont:[UIFont systemFontOfSize:12.0] andFontColour:[UIColor redColor]];
     [tabBarController.tabBar configureTabAtIndex:1 andTitleOrientation : kTitleToRightOfIcon withUnselectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_normal"] selectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_selected"] iconImage:[UIImage imageNamed:@"forecast_normal"]  iconSelectedImage: [UIImage imageNamed:@"forecast_selected"] andText:@"预报" andTextFont:[UIFont systemFontOfSize:12.0] andFontColour:[UIColor whiteColor]];
     [tabBarController.tabBar configureTabAtIndex:2 andTitleOrientation : kTitleToRightOfIcon withUnselectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_normal"] selectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_selected"] iconImage:[UIImage imageNamed:@"zhishu_normal"]  iconSelectedImage: [UIImage imageNamed:@"zhishu_selected"] andText:@"指数" andTextFont:[UIFont systemFontOfSize:12.0] andFontColour:[UIColor whiteColor]];
     [tabBarController.tabBar configureTabAtIndex:3 andTitleOrientation : kTitleToRightOfIcon withUnselectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_normal"] selectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_selected"] iconImage:[UIImage imageNamed:@""]  iconSelectedImage: [UIImage imageNamed:@""] andText:@"更多" andTextFont:[UIFont systemFontOfSize:12.0] andFontColour:[UIColor whiteColor]];
     
     [tabBarController selectTabAtIndex:0];
-    
-    //[navigationBarAppearance setTitleTextAttributes:textAttributes];
-
 
     return YES;
 }
@@ -91,7 +76,3 @@
 
 
 @end
-
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com 

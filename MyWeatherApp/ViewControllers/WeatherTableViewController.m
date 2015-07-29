@@ -7,7 +7,6 @@
 //
 
 #import "WeatherTableViewController.h"
-//#import "ForecastViewController.h"
 #import "DropDownView.h"
 #import "WeatherParse.h"
 
@@ -48,26 +47,15 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(leftMenuSelected:)];
     [leftButton setTintColor:[UIColor grayColor]];
     self.navigationItem.leftBarButtonItem = leftButton;
-    //self.navigationItem.title = @"天气应用";
     
-    //self.dropView = [[DropDownView alloc] init];//[[[NSBundle mainBundle] loadNibNamed:@"DropDownView" owner:self options:nil] objectAtIndex:0];
-    //__weak NMWeatherTableViewController *wself = self;
-    //[self.dropView setDropDownDelegate:wself];
-    //self.dropView.dropDownDelegate = self;
-//    __weak NMWeatherTableViewController *wself = self;
-//    self.dropView.showCityWeather = ^(NSString *cityName){
-//        wself.navigationItem.title = cityName;
-//    
-//    };
     self.tableView.tableFooterView = [[UIView alloc] init];
 
 }
 
 - (void)leftMenuSelected:(id)sender
 {
-    NSLog(@"Tap");
+    //NSLog(@"Tap");
     [self.rootNavi drawerToggle];
-    //self.navigationItem.title = @"tap";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +76,7 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
     NSString *url = [NSString stringWithFormat:@"%@%@", weatherURL, county.weatherCode];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //self.weatherParse = [[WeatherParse alloc] initWithURLPath:url];
+        
         [[WeatherParse sharedInstance] parseWeatherURL:url];
         
         basicArray = [[WeatherParse sharedInstance] basicArray];
@@ -104,8 +92,6 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
         }
     });
     
-    //[[WeatherParse alloc] initWithURLPath:url];
-    //[self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -128,26 +114,6 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
     }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    CGFloat width = self.tableView.frame.size.width;
-//    CGSize contextSize = CGSizeMake(width, 1000);
-//    
-//    // 计算时设置的字体大小，和显示文本的label字体大小一致
-//    NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:17.0]};
-//    NSString *content;
-//    if (indexPath.section == 0) {
-//        content = [self.weatherParse.basicArray objectAtIndex:indexPath.row];
-//    }
-//    else {
-//        content = [envirDesc objectAtIndex:indexPath.row];
-//    }
-//    
-//    // 计算显示内容所需最小尺寸
-//    CGRect rect = [content boundingRectWithSize:contextSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-//    //CGSize size = [content sizeWithFont:[UIFont systemFontOfSize:17.0] constrainedToSize:CGSizeMake(width, 1000) lineBreakMode:UILineBreakModeCharacterWrap];
-//    return rect.size.height + 24;
-//}
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     self.tableView.estimatedRowHeight = 44.0;
     return UITableViewAutomaticDimension;
@@ -163,7 +129,6 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
     
     // Configure the cell...
     NSString *desc;
-    //NSUInteger count = self.weatherParse.basicArray.count;
     if (indexPath.section == 0) {
         desc = [NSString stringWithFormat:@"%@%@", basicDesc[indexPath.row], basicArray[indexPath.row]];
     }

@@ -97,17 +97,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    static NSString *CellIdentifier = @"";
-//    if (tableView == _provinceTableView) {
-//        CellIdentifier = @"ProvinceCell";
-//    }
-//    else if (tableView == _cityTableView) {
-//        CellIdentifier = @"CityCell";
-//    }
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (!cell)
-//        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
-
     DropDownViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"DropDownViewCell" owner:self options:nil] objectAtIndex:0];
     
     if (tableView == _provinceTableView) {
@@ -157,7 +146,7 @@
 //    // Configure the cell...
     if (tableView == _provinceTableView) {
         Province *province = [arrayProvinces objectAtIndex:[indexPath row]];
-        cell.titleLabel.text = province.provinceName;//[NSString stringWithFormat:@"%@", province.provinceName];
+        cell.titleLabel.text = province.provinceName;
     }
     else if (tableView == _cityTableView) {
         City *city = [arrayCitys objectAtIndex:[indexPath row]];

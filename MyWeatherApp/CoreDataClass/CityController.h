@@ -17,7 +17,6 @@
 - (void)insertCity:(NSArray *)array toProvince:(NSUInteger)provinceID;
 
 - (NSArray *)fetchCityFromProvince:(Province *)province;
-//- (NSArray *)fetchCountyFromCity:(City *)city;
 
 - (City *)fetchCityWithName:(NSString *)name;
 - (City *)fetchCityWithCode:(NSString *)code;

@@ -92,7 +92,7 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {
-    NSString *alarm = [NSString stringWithUTF8String:[CDATABlock bytes]];
+//    NSString *alarm = [NSString stringWithUTF8String:[CDATABlock bytes]];
 }
 
 @end

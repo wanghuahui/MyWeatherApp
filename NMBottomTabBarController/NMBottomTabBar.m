@@ -11,8 +11,6 @@
 #define ICON_SPACING 5.0
 #define WIDTH_CONSTANT -1.00
 
-
-
 @implementation NMBottomTabBar
 @synthesize separatorImage = _separatorImage;
 
@@ -26,15 +24,11 @@
 -(id)init{
     self = [super init];
     if(self){
-        
         selectedIndex = -1;
-        
-        
     }
     return self;
-
-    
 }
+
 -(id)initWithCoder:(NSCoder *)aDecoder{
     
     self = [super initWithCoder:aDecoder];
@@ -42,11 +36,10 @@
         
         tabButtons = [[NSMutableArray alloc] init];
         selectedIndex = -1;
-    
-        
     }
     return self;
 }
+
 -(void)layoutTabWihNumberOfButtons:(NSInteger)tabsCount{
     
     UIImageView *previousSpacerImageView;
@@ -72,8 +65,6 @@
             [NSLayoutConstraint constraintsWithVisualFormat:@"[previousSpacerImageView]-0-[button]"
                                                     options:0 metrics:nil views:viewsDictionary];
             [self addConstraints:constraints];
-            
-            
         }
         CGFloat multiplier = 1.00/tabsCount;
         
@@ -85,9 +76,7 @@
         else{
             [self addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:multiplier constant:WIDTH_CONSTANT]];
         }
-            
         
-
         if(i < tabsCount-1){
             
             UIImageView *spacerImageView = [[UIImageView alloc] initWithImage:self.separatorImage];
@@ -96,7 +85,6 @@
             [spacerImageView setTag:10 + i+1];
             [spacerImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
-            
             NSDictionary *viewsDictionary =
             NSDictionaryOfVariableBindings(button,spacerImageView);
             NSArray *constraints =
@@ -118,9 +106,10 @@
     [self layoutIfNeeded];
     
 }
+
 -(void)layoutSubviews{
     [super layoutSubviews];
-  }
+}
 
 -(void)configureTabAtIndex : (NSInteger)index andTitleOrientation : (NMTitleOrientation)titleOrientation withUnselectedBackgroundImage : (UIImage *)backImage selectedBackgroundImage : (UIImage *)selecetedBackImage
     iconImage : (UIImage *)iconImage iconSelectedImage: (UIImage *)iconSelectedImage
@@ -151,12 +140,12 @@
     }
     
 }
+
 -(void)tabSelected : (id)sender{
     
     UIButton *button = (UIButton *)sender;
     
     BOOL shouldSelect = YES;
-    
    
     if(selectedIndex != (button.tag -1)){
         if([self.delegate respondsToSelector:@selector(shouldSelectTabAtIndex:)])
@@ -172,6 +161,7 @@
         }
     }
 }
+
 -(void)setTabSelectedWithIndex:(NSInteger)index{
    
     UIButton *button = (UIButton *)[self viewWithTag:index +1];
@@ -187,15 +177,9 @@
             
             UIImageView *separatorView = (UIImageView *)[self viewWithTag:i];
             [separatorView setImage:self.separatorImage];
-            
         }
   
     }
 }
 
-
 @end
-
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com 

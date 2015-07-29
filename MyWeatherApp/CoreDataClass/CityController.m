@@ -47,7 +47,6 @@
         
         NSArray *fetchItems = [context executeFetchRequest:fetchRequest error:&error];
         //NSLog(@"%lu %@", (unsigned long)[fetchItems count], fetchItems);
-        //Province *pro = [fetchItems objectAtIndex:0];
         if (fetchItems.count == 0) {
             City *city = [NSEntityDescription insertNewObjectForEntityForName:@"City" inManagedObjectContext:context];
             city.cityCode = dict[@"id"];

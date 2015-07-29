@@ -16,7 +16,7 @@
 
 @end
 
-@interface CCKFNavDrawer : UINavigationController <UIGestureRecognizerDelegate>//, UITableViewDataSource, UITableViewDelegate>
+@interface CCKFNavDrawer : UINavigationController <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIPanGestureRecognizer *panGest;
 @property (weak, nonatomic) id<CCKFNavDrawerDelegate> CCKFNavDrawerDelegate;

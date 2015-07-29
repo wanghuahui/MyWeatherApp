@@ -109,13 +109,8 @@
     [self.view addSubview:self.shawdowView];
     
     // add drawer view
-    //self.dropView.frame = CGRectMake(-self.menuWidth,0,self.menuWidth,self.meunHeight);
     [self.dropView setFrame:self.outFrame];
     [self.view addSubview:self.dropView];
-    
-//    self.dropView.alpha = 1.f;
-//    self.dropView.provinceView.alpha = 1.f;
-//    self.dropView.cityView.alpha = 1.f;
     
     // drawer list
     [self.dropView.provinceTableView setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)]; // statuesBarHeight+navBarHeight
@@ -127,14 +122,9 @@
     self.panGest = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveDrawer:)];
     self.panGest.maximumNumberOfTouches = 1;
     self.panGest.minimumNumberOfTouches = 1;
-    //self.pan_gr.delegate = self;
     [self.view addGestureRecognizer:self.panGest];
     
     [self.view bringSubviewToFront:self.navigationBar];
-    
-//    for (id x in self.view.subviews){
-//        NSLog(@"%@",NSStringFromClass([x class]));
-//    }
 }
 
 - (void)drawerToggle
@@ -149,8 +139,8 @@
 #pragma open and close action
 
 - (void)openNavigationDrawer{
-//    NSLog(@"open x=%f",self.menuView.center.x);
-    float duration = MENU_DURATION/self.menuWidth*abs(self.dropView.center.x)+MENU_DURATION/2; // y=mx+c
+
+    float duration = MENU_DURATION/self.menuWidth*fabs(self.dropView.center.x)+MENU_DURATION/2; // y=mx+c
     
     // shawdow
     self.shawdowView.hidden = NO;
@@ -175,8 +165,8 @@
 }
 
 - (void)closeNavigationDrawer{
-//    NSLog(@"close x=%f",self.menuView.center.x);
-    float duration = MENU_DURATION/self.menuWidth*abs(self.dropView.center.x)+MENU_DURATION/2; // y=mx+c
+
+    float duration = MENU_DURATION/self.menuWidth*fabs(self.dropView.center.x)+MENU_DURATION/2; // y=mx+c
     
     // shawdow
     [UIView animateWithDuration:duration
@@ -244,42 +234,6 @@
         }
     }
 
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return 20;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (!cell)
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: CellIdentifier];
-    
-    // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat:@"row %li",(long)[indexPath row]];
-    
-    return cell;
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //[self.CCKFNavDrawerDelegate CCKFNavDrawerSelection:[indexPath row]];
-    [self closeNavigationDrawer];
 }
 
 @end

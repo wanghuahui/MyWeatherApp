@@ -12,7 +12,6 @@
 
 @interface ForecastViewController () <UITableViewDataSource, UITableViewDelegate>
 
-//@property (strong, nonatomic) WeatherTableViewController *weatherController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *forecastArray;
 
@@ -67,10 +66,6 @@
     [self.tableView reloadData];
 }
 
-//- (void)selectedArray:(NSArray *)array {
-//    //self.fcArray = array;
-//    NSLog(@"log");
-//}
 
 #pragma mark - Tableview DataSource
 

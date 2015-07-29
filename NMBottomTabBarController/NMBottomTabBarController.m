@@ -25,8 +25,6 @@
 @property (nonatomic, strong) NSMutableArray *arrayCity;
 @property (nonatomic, strong) NSMutableArray *arrayCounty;
 
-//@property (nonatomic, strong) ForecastViewController *forecastView;
-
 @end
 
 @implementation NMBottomTabBarController
@@ -37,10 +35,10 @@
     self = [super init];
     if(self){
         
-        
     }
     return self;
 }
+
 -(void)awakeFromNib{
 
     self.tabBar = [NMBottomTabBar new];
@@ -55,8 +53,6 @@
     [self setUpConstraintsForTabBar];
     
     [self.tabBar setDelegate:self];
-    
-    //self.forecastView = [[ForecastViewController alloc] init];
   
 }
 
@@ -64,12 +60,10 @@
     
     _controllers = controllers;
      [self.tabBar layoutTabWihNumberOfButtons:self.controllers.count];
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
 
     self.arrayProvince = [[NSMutableArray alloc] init];
     self.arrayCity     = [[NSMutableArray alloc] init];  // 初始化
@@ -83,6 +77,7 @@
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+
 -(void)setUpConstraintsForTabBar{
     
     NMBottomTabBar *tempTabBar = self.tabBar;
@@ -90,9 +85,9 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tempTabBar]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tempTabBar)]];
     [tempTabBar setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view setNeedsLayout];
-
     
 }
+
 -(void)setUpConstraintsForContainerView {
     
     NMBottomTabBar *tempTabBar = self.tabBar;
@@ -108,10 +103,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 -(void)selectTabAtIndex:(NSInteger)index{
    
    [self.tabBar setTabSelectedWithIndex:index];
 }
+
 -(void)didSelectTabAtIndex:(NSInteger)index{
 
      if(selectedIndex == -1){
@@ -122,10 +119,6 @@
         [containerView addSubview:destinationController.view];
         [self setUpContsraintsForDestinationCOntrollerView:destinationController.view];
         selectedIndex = index;
-//         if (index == 1) {
-//             [self.delegate selectedArray:[[NSArray alloc] initWithObjects:@"ddd", @"eee", nil]];
-//         }
-        
     }
     else if(selectedIndex != index){
         
@@ -133,9 +126,6 @@
         UIViewController *destinationController = [self.controllers objectAtIndex:index];
         [self addChildViewController:destinationController];
         [destinationController didMoveToParentViewController:self];
-//        if (index == 1) {
-//            [self.delegate selectedArray:[[NSArray alloc] initWithObjects:@"ddd", @"eee", nil]];
-//        }
         
         [self transitionFromViewController:sourceController toViewController:destinationController duration:0.3 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
@@ -150,17 +140,11 @@
                 
                 [self.delegate didSelectTabAtIndex:selectedIndex];
             }
-//            if (index == 1) {
-//                self.forecastView.fcArray = @[@"yesterday", @"today"];
-//                [self.forecastView.tableView reloadData];
-//            }
             
         }];
-        
     }
-
-   
 }
+
 -(BOOL)shouldSelectTabAtIndex:(NSInteger)index{
     
     if([self.delegate respondsToSelector:@selector(shouldSelectTabAtIndex:)]){
@@ -168,8 +152,8 @@
         return [self.delegate shouldSelectTabAtIndex:index];
     }
     return YES;
-    
 }
+
 -(void)setUpContsraintsForDestinationCOntrollerView : (UIView *)view {
     
     [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(view)]];
@@ -193,14 +177,12 @@ static NSString * const kCountyElementName   = @"county";
     }
     else if ([elementName isEqualToString:kProvinceElementName]) {
         self.proID = [attributeDict valueForKey:@"id"];
-        //[self.arrayProvince addObject:attributeDict];
         [[ProvinceController sharedInstance] insertProvince:[[NSArray alloc] initWithObjects:attributeDict, nil]];
         
     }
     else if ([elementName isEqualToString:kCityElementName]) {
-        //[self.arrayCity addObject:attributeDict];
-        self.cityCode = [attributeDict valueForKey:@"id"];
         
+        self.cityCode = [attributeDict valueForKey:@"id"];
         [[CityController sharedInstance] insertCity:[[NSArray alloc] initWithObjects:attributeDict, nil] toProvince:[self.proID intValue]];
         
     }
@@ -211,32 +193,9 @@ static NSString * const kCountyElementName   = @"county";
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-//    if ([elementName isEqualToString:kChinaElementName]) {
-//        
-//        [[ProvinceController sharedInstance] insertProvince:self.arrayProvince];
-//        
-//        self.proID = @"";
-//    }
-    if ([elementName isEqualToString:kProvinceElementName]) {
-        //NSString *provinceID = [attributeDict valueForKey:@"id"];
-        
-        //[[CityController sharedInstance] insertCity:self.arrayCity toProvince:[self.proID intValue]];
-        //self.arrayCity = [[NSMutableArray alloc] init];
-        
-        //NSArray *provinces = [[ProvinceController sharedInstance] fetchProvinces];
-//        Province *province = [[ProvinceController sharedInstance] fetchProvinceWithCode:[self.proID intValue]];
-//        NSLog(@"id %@, name %@", province.provinceID, province.provinceName);
-//        NSArray *array = [[CityController sharedInstance] fetchCityFromProvince:province];
-//        
-//        for (City *city in array) {
-//            NSLog(@"city id %@, name %@", city.cityCode, city.cityName);
-//            
-//            NSArray *countys = [[CountyController sharedInstance] fetchCountyFromCity:city];
-//            for (County *county in countys) {
-//                NSLog(@"county id %@, name %@, weatherCode %@", county.countyCode, county.countyName, county.weatherCode);
-//            }
-//        }
 
+    if ([elementName isEqualToString:kProvinceElementName]) {
+ 
     }
     else if ([elementName isEqualToString:kCityElementName]) {
         
@@ -255,6 +214,3 @@ static NSString * const kCountyElementName   = @"county";
 
 @end
 
-// 版权属于原作者
-// http://code4app.com (cn) http://code4app.net (en)
-// 发布代码于最专业的源码分享网站: Code4App.com 

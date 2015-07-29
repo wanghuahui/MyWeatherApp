@@ -9,18 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CCKFNavDrawer.h"
 
-@protocol WeatherViewDelegate <NSObject>
-
-@optional
-
-- (void)selectedArray:(NSArray *)array;
-
-@end
-
 @interface WeatherTableViewController : UITableViewController
-
-//- (void)setNaviName:(NSString *)name;
-@property (assign, nonatomic) id <WeatherViewDelegate> delegate;
 
 
 @end

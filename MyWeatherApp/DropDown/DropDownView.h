@@ -10,7 +10,6 @@
 
 
 typedef void (^CloseNaviBlock)(NSString *cityName);
-//typedef void (^ShowCityWeather)(NSString *cityName);
 
 @interface DropDownView : UIView <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,8 +19,5 @@ typedef void (^CloseNaviBlock)(NSString *cityName);
 @property (weak, nonatomic) IBOutlet UITableView *cityTableView;
 
 @property (strong, nonatomic) CloseNaviBlock closeNaviBlock;
-//@property (strong, nonatomic) ShowCityWeather showCityWeather;
-
-//@property (weak, nonatomic) id<DropDownDelegate> dropDownDelegate;
 
 @end
