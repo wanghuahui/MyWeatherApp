@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "CCKFNavDrawer.h"
 #import "NMBottomTabBarController.h"
-#import "WeatherTableViewController.h"
-#import "ForecastViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,18 +21,14 @@
     // Override point for customization after application launch.
     
     NSMutableArray *controllers = [NSMutableArray arrayWithCapacity:4];
-    NSArray *storyArray = @[@"Weather", @"Forecast"];
+    NSArray *storyArray = @[@"Weather", @"Forecast", @"Zhishu"];
     [storyArray enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {  // 遍历数组
         UIStoryboard *sb = [UIStoryboard storyboardWithName:name bundle:nil];
         UIViewController *vc = [sb instantiateInitialViewController];
         [controllers addObject:vc];
     }];
     
-    UIViewController *threeController = [UIViewController new];
-    threeController.view.backgroundColor = [UIColor purpleColor];
     UIViewController *fourController = [UIViewController new];
-    fourController.view.backgroundColor = [UIColor orangeColor];
-    [controllers addObject:threeController];
     [controllers addObject:fourController];
     
     NMBottomTabBarController *tabBarController = (NMBottomTabBarController *)self.window.rootViewController;
@@ -48,6 +42,9 @@
     [tabBarController.tabBar configureTabAtIndex:3 andTitleOrientation : kTitleToRightOfIcon withUnselectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_normal"] selectedBackgroundImage:[UIImage imageNamed:@"tabbar_bg_selected"] iconImage:[UIImage imageNamed:@""]  iconSelectedImage: [UIImage imageNamed:@""] andText:@"更多" andTextFont:[UIFont systemFontOfSize:12.0] andFontColour:[UIColor whiteColor]];
     
     [tabBarController selectTabAtIndex:0];
+    
+    //CCKFNavDrawer *navDrawer = [[CCKFNavDrawer alloc] init];
+    //[navDrawer.CCKFNavDrawerDelegate CCKFNavDrawerSelection:@"北京"];
 
     return YES;
 }

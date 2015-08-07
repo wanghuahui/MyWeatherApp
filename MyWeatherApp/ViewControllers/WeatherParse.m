@@ -10,6 +10,7 @@
 
 @interface WeatherParse () <NSXMLParserDelegate>
 
+@property (nonatomic, strong) NSMutableString *zhishuString;
 
 @end
 
@@ -19,6 +20,7 @@
     BOOL _bEnvir;
     BOOL _bAlarm;
     BOOL _bForecast;
+    BOOL _bZhishu;
 }
 
 + (id)sharedInstance {
@@ -49,6 +51,8 @@
         self.basicArray = [[NSMutableArray alloc] init];
         self.envirArray = [[NSMutableArray alloc] init];
         self.forecastArray = [NSMutableArray array];
+        self.zhishuArray = [NSMutableArray array];
+        self.zhishuString = [NSMutableString string];
     }
     else if ([elementName isEqualToString:@"updatetime"]) {
         _bBasic = YES;
@@ -59,6 +63,10 @@
     }
     else if ([elementName isEqualToString:@"yesterday"]) {
         _bForecast = YES;
+    }
+    else if ([elementName isEqualToString:@"zhishu"]) {
+        _bZhishu = YES;
+        [self.zhishuString setString:@""];
     }
 }
 
@@ -72,6 +80,14 @@
     }
     else if ([elementName isEqualToString:@"forecast"]) {
         _bForecast = NO;
+    }
+    else if ([elementName isEqualToString:@"zhishu"]) {
+        NSString *str = [NSString stringWithString:_zhishuString];
+        [self.zhishuArray addObject:str];
+    }
+    if ([elementName isEqualToString:@"zhishus"]) {
+        _bZhishu = NO;
+        self.zhishuString = [NSMutableString string];
     }
     
 }
@@ -88,6 +104,10 @@
     }
     if (_bForecast) {
         [self.forecastArray addObject:string];
+    }
+    if (_bZhishu) {
+        [self.zhishuString appendString:string];
+        [self.zhishuString appendString:@"|"];
     }
 }
 

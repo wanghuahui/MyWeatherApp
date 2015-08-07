@@ -42,6 +42,7 @@
 		B5AB32641B39B8A1002D8B01 /* DropDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5AB32611B39B8A1002D8B01 /* DropDownView.xib */; };
 		B5BA2E7F1B347C7500A1E1E4 /* menu-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BA2E7D1B347C7500A1E1E4 /* menu-button.png */; };
 		B5BA2E801B347C7500A1E1E4 /* menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5BA2E7E1B347C7500A1E1E4 /* menu-button@2x.png */; };
+		B5CDEAEA1B74EE600034930C /* ZhishuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CDEAE91B74EE600034930C /* ZhishuTableViewController.m */; };
 		B5CF60A21B52335A00D8E7FF /* DropDownViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF60A01B52335A00D8E7FF /* DropDownViewCell.m */; };
 		B5CF60A31B52335A00D8E7FF /* DropDownViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5CF60A11B52335A00D8E7FF /* DropDownViewCell.xib */; };
 		B5CF81981B67E2FB00540E1D /* Forecast.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5CF818E1B67E2FB00540E1D /* Forecast.storyboard */; };
@@ -51,6 +52,7 @@
 		B5CF819C1B67E2FB00540E1D /* WeatherParse.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF81951B67E2FB00540E1D /* WeatherParse.m */; };
 		B5CF819D1B67E2FB00540E1D /* WeatherTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5CF81971B67E2FB00540E1D /* WeatherTableViewController.m */; };
 		B5D04AE91B5129FC00DCE684 /* County.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D04AE81B5129FC00DCE684 /* County.m */; };
+		B5D06ED61B73B0F4000A2EB7 /* Zhishu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5D06ED51B73B0F4000A2EB7 /* Zhishu.storyboard */; };
 		B5D1BC001B4ECC4600B10323 /* CountyController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5D1BBFF1B4ECC4600B10323 /* CountyController.m */; };
 		C91609A31A36DADD00895B4D /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = C91609A11A36DADD00895B4D /* home.png */; };
 		C91609A41A36DADD00895B4D /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C91609A21A36DADD00895B4D /* home@2x.png */; };
@@ -128,6 +130,8 @@
 		B5AB32611B39B8A1002D8B01 /* DropDownView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DropDownView.xib; path = DropDown/DropDownView.xib; sourceTree = "<group>"; };
 		B5BA2E7D1B347C7500A1E1E4 /* menu-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button.png"; sourceTree = "<group>"; };
 		B5BA2E7E1B347C7500A1E1E4 /* menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-button@2x.png"; sourceTree = "<group>"; };
+		B5CDEAE81B74EE600034930C /* ZhishuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZhishuTableViewController.h; sourceTree = "<group>"; };
+		B5CDEAE91B74EE600034930C /* ZhishuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZhishuTableViewController.m; sourceTree = "<group>"; };
 		B5CF609F1B52335900D8E7FF /* DropDownViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropDownViewCell.h; path = DropDown/DropDownViewCell.h; sourceTree = "<group>"; };
 		B5CF60A01B52335A00D8E7FF /* DropDownViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropDownViewCell.m; path = DropDown/DropDownViewCell.m; sourceTree = "<group>"; };
 		B5CF60A11B52335A00D8E7FF /* DropDownViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DropDownViewCell.xib; path = DropDown/DropDownViewCell.xib; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		B5CF81971B67E2FB00540E1D /* WeatherTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewController.m; sourceTree = "<group>"; };
 		B5D04AE71B5129FC00DCE684 /* County.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = County.h; path = Model/County.h; sourceTree = "<group>"; };
 		B5D04AE81B5129FC00DCE684 /* County.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = County.m; path = Model/County.m; sourceTree = "<group>"; };
+		B5D06ED51B73B0F4000A2EB7 /* Zhishu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Zhishu.storyboard; sourceTree = "<group>"; };
 		B5D1BBFE1B4ECC4600B10323 /* CountyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountyController.h; path = CoreDataClass/CountyController.h; sourceTree = "<group>"; };
 		B5D1BBFF1B4ECC4600B10323 /* CountyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountyController.m; path = CoreDataClass/CountyController.m; sourceTree = "<group>"; };
 		C91609A11A36DADD00895B4D /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -316,6 +321,9 @@
 				B5CF81951B67E2FB00540E1D /* WeatherParse.m */,
 				B5CF81961B67E2FB00540E1D /* WeatherTableViewController.h */,
 				B5CF81971B67E2FB00540E1D /* WeatherTableViewController.m */,
+				B5D06ED51B73B0F4000A2EB7 /* Zhishu.storyboard */,
+				B5CDEAE81B74EE600034930C /* ZhishuTableViewController.h */,
+				B5CDEAE91B74EE600034930C /* ZhishuTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -525,6 +533,7 @@
 				B55D2A4B1B3322FA00887C4F /* forecast_normal@2x.png in Resources */,
 				C9E430ED1A31DACD00EF46E4 /* unselected@2x.jpeg in Resources */,
 				B55D2A4F1B3322FA00887C4F /* navigationbar_background@2x.png in Resources */,
+				B5D06ED61B73B0F4000A2EB7 /* Zhishu.storyboard in Resources */,
 				B55D2A4C1B3322FA00887C4F /* forecast_selected.png in Resources */,
 				C9E430E91A31DACD00EF46E4 /* separator@2x.jpg in Resources */,
 				B55D2A551B3322FA00887C4F /* tabbar_bg_selected@2x.png in Resources */,
@@ -566,6 +575,7 @@
 				B5AB32631B39B8A1002D8B01 /* DropDownView.m in Sources */,
 				B5A9472D1B403E9400DDB259 /* CoreDataController.m in Sources */,
 				C9E430D61A31DABA00EF46E4 /* AppDelegate.m in Sources */,
+				B5CDEAEA1B74EE600034930C /* ZhishuTableViewController.m in Sources */,
 				C9E430D21A31DA1600EF46E4 /* NMBottomTabBarController.m in Sources */,
 				B5CF819A1B67E2FB00540E1D /* ForecastViewController.m in Sources */,
 				B5CF60A21B52335A00D8E7FF /* DropDownViewCell.m in Sources */,

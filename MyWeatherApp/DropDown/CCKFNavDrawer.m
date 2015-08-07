@@ -94,7 +94,7 @@
     //self.dropView.backgroundColor = [UIColor redColor];
     
     self.meunHeight = (self.view.frame.size.height*3)/4;
-    self.menuWidth  = self.view.frame.size.width;//self.dropView.frame.size.width;
+    self.menuWidth  = self.view.frame.size.width;    //self.dropView.frame.size.width;
     self.outFrame = CGRectMake(-self.menuWidth,0,self.menuWidth,self.meunHeight);
     self.inFrame = CGRectMake (0,0,self.menuWidth,self.meunHeight);
     

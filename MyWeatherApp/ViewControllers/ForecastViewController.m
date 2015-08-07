@@ -81,7 +81,9 @@
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:forecastCell];
     }
     
+    cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.textLabel.text = [self.forecastArray objectAtIndex:indexPath.row];
+    
     return cell;
 }
 

@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSMutableArray *envirArray;  // 环境信息
 @property (strong, nonatomic) NSMutableArray *alarmArray;  // 天气预警信息
 @property (strong, nonatomic) NSMutableArray *forecastArray;
+@property (nonatomic, strong) NSMutableArray *zhishuArray;    // 指数信息
 
 + (id)sharedInstance;
 
