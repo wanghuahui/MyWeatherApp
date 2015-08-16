@@ -82,12 +82,19 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
         basicArray = [[WeatherParse sharedInstance] basicArray];
         if (basicArray.count > 0) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *s1 = [NSString stringWithFormat:@"pm2.5：%@", [[WeatherParse sharedInstance] envirArray][1]];
-                NSString *s2 = [NSString stringWithFormat:@"空气质量：%@", [[WeatherParse sharedInstance] envirArray][3]];
-                NSString *s3 = [NSString stringWithFormat:@"建议：%@", [[WeatherParse sharedInstance] envirArray][2]];
-                envirDesc = [[NSArray alloc] initWithObjects:s1, s2, s3, nil];
-                
+                NSArray *array = [[WeatherParse sharedInstance] envirArray];
+                if (array.count > 0) {
+                    
+                    NSString *s1 = [NSString stringWithFormat:@"pm2.5：%@", [[WeatherParse sharedInstance] envirArray][1]];
+                    NSString *s2 = [NSString stringWithFormat:@"空气质量：%@", [[WeatherParse sharedInstance] envirArray][3]];
+                    NSString *s3 = [NSString stringWithFormat:@"建议：%@", [[WeatherParse sharedInstance] envirArray][2]];
+                    envirDesc = [[NSArray alloc] initWithObjects:s1, s2, s3, nil];
+                }
+                else {
+                    envirDesc = nil;
+                }
                 [self.tableView reloadData];
+                
             });
         }
     });
@@ -99,14 +106,16 @@ const static NSString *weatherURL = @"http://wthrcdn.etouch.cn/WeatherApi?cityke
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 2;
+    if (envirDesc.count > 0) {
+        return 2;
+    }
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     if (section == 0) {
-        
         return basicArray.count;
     }
     else {

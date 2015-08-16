@@ -38,30 +38,31 @@
     
     [super viewWillAppear:animated];
     
-    NSArray *array = [[WeatherParse sharedInstance] forecastArray];
-    if (array.count > 0) {
-        NSUInteger count = array.count / 10;
-        NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:count];
-        for (int i=0; i<count; i++) {
-            NSString *wendu = [NSString stringWithFormat:@"%@", array[i*10+2]];  // 提取温度
-            NSScanner *scanner = [NSScanner scannerWithString:wendu];
-            NSString *s1, *s2;
-            if ([scanner scanString:@"高温 " intoString:NULL]) {
-                [scanner scanUpToCharactersFromSet:[NSCharacterSet illegalCharacterSet] intoString:&s1];
-            }
-            wendu = [NSString stringWithFormat:@"%@", array[i*10+3]];  // 提取温度
-            scanner = [NSScanner scannerWithString:wendu];
-            if ([scanner scanString:@"低温 " intoString:NULL]) {
-                [scanner scanUpToCharactersFromSet:[NSCharacterSet illegalCharacterSet] intoString:&s2];
-            }
-            
-            NSString *date = [NSString stringWithFormat:@"%@%@  %@/%@  %@", array[i*10], array[i*10+1], s1, s2, array[i*10+4]];
-            [mutableArray addObject:date];
-
-        }
-        self.forecastArray = [NSArray arrayWithArray:mutableArray];
-        mutableArray = nil;
-    }
+    self.forecastArray = [NSArray arrayWithArray:[[WeatherParse sharedInstance] forecastArray]];
+//    NSArray *array = [[WeatherParse sharedInstance] forecastArray];
+//    if (array.count > 0) {
+//        NSUInteger count = array.count / 10;
+//        NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:count];
+//        for (int i=0; i<count; i++) {
+//            NSString *wendu = [NSString stringWithFormat:@"%@", array[i*10+2]];  // 提取温度
+//            NSScanner *scanner = [NSScanner scannerWithString:wendu];
+//            NSString *s1, *s2;
+//            if ([scanner scanString:@"高温 " intoString:NULL]) {
+//                [scanner scanUpToCharactersFromSet:[NSCharacterSet illegalCharacterSet] intoString:&s1];
+//            }
+//            wendu = [NSString stringWithFormat:@"%@", array[i*10+3]];  // 提取温度
+//            scanner = [NSScanner scannerWithString:wendu];
+//            if ([scanner scanString:@"低温 " intoString:NULL]) {
+//                [scanner scanUpToCharactersFromSet:[NSCharacterSet illegalCharacterSet] intoString:&s2];
+//            }
+//            
+//            NSString *date = [NSString stringWithFormat:@"%@%@  %@/%@  %@", array[i*10], array[i*10+1], s1, s2, array[i*10+4]];
+//            [mutableArray addObject:date];
+//
+//        }
+//        self.forecastArray = [NSArray arrayWithArray:mutableArray];
+//        mutableArray = nil;
+//    }
     
     [self.tableView reloadData];
 }
@@ -81,8 +82,23 @@
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:forecastCell];
     }
     
+    NSString *str = [NSString stringWithFormat:@"%@", self.forecastArray[indexPath.row]];
+    NSArray *array = [str componentsSeparatedByString:@","];  // 截取字符串
+    
+    NSString *wendu = [NSString stringWithFormat:@"%@", array[2]];  // 提取高温
+    NSScanner *scanner = [NSScanner scannerWithString:wendu];
+    NSString *s1, *s2;
+    if ([scanner scanString:@"高温 " intoString:NULL]) {
+        [scanner scanUpToCharactersFromSet:[NSCharacterSet illegalCharacterSet] intoString:&s1];
+    }
+    wendu = [NSString stringWithFormat:@"%@", array[3]];  // 提取低温
+    scanner = [NSScanner scannerWithString:wendu];
+    if ([scanner scanString:@"低温 " intoString:NULL]) {
+        [scanner scanUpToCharactersFromSet:[NSCharacterSet illegalCharacterSet] intoString:&s2];
+    }
+
     cell.textLabel.textColor = [UIColor darkGrayColor];
-    cell.textLabel.text = [self.forecastArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@%@  %@/%@  %@", array[0], array[1], s1, s2, array[4]];
     
     return cell;
 }
@@ -92,8 +108,8 @@
     ForecastDetailViewController *detailView = (ForecastDetailViewController *)segue.destinationViewController;
     
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    //detailView.detailArray = [[NSArray alloc] initWithArray:self.forecastArray];
-    detailView.detailString = self.forecastArray[indexPath.row];
+    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    detailView.detailString = selectedCell.textLabel.text;  // 获取cell内容
 }
 
 /*
